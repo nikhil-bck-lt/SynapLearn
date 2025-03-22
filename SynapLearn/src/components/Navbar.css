@@ -7,7 +7,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #007bff;
+    background-color: #1e4b36;
+    /* #6c04bb */
     padding: 15px 30px;
     z-index: 1000;
   }
@@ -15,7 +16,7 @@ nav {
   nav a {
     margin-left: 20px; /* Add space between links */
     text-decoration: none;
-    color: white;
+    color: rgb(0, 0, 0);
     font-weight: bold;
     transition: color 0.3s;
   }
