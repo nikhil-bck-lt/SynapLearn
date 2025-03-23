@@ -51,13 +51,13 @@ const Resources = () => {
     };
 
     return (
-        <div style={{ padding: "40px" }}>
-            <h1 style={{ fontSize: "36px", marginBottom: "20px" }}>Resources</h1>
+        <div style={{ padding: "20px" }}>
+            <h1 style={{ fontSize: "28px", marginBottom: "15px" }}>Resources</h1>
             <div
                 style={{
                     display: "grid",
                     gridTemplateColumns: "repeat(2, 1fr)",
-                    gap: "30px",
+                    gap: "20px",
                 }}
             >
                 {pdfs.map((pdf) => (
@@ -65,24 +65,24 @@ const Resources = () => {
                         key={pdf.id}
                         onClick={() => handleCardClick(pdf.url)}
                         style={{
-                            border: "2px solid #ccc",
-                            borderRadius: "12px",
-                            padding: "24px",
+                            border: "1px solid #ccc",
+                            borderRadius: "8px",
+                            padding: "16px",
                             cursor: "pointer",
-                            boxShadow: "0 6px 12px rgba(0, 0, 0, 0.15)",
+                            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                             transition: "transform 0.2s",
                         }}
-                        onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+                        onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
                         onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
                     >
-                        <h3 style={{ fontSize: "24px", marginBottom: "10px" }}>{pdf.name}</h3>
-                        <p style={{ fontSize: "18px", marginBottom: "15px" }}>Subject: {pdf.subject}</p>
-                        <div style={{ marginTop: "15px" }}>
+                        <h3 style={{ fontSize: "20px", marginBottom: "8px" }}>{pdf.name}</h3>
+                        <p style={{ fontSize: "16px", marginBottom: "10px" }}>Subject: {pdf.subject}</p>
+                        <div style={{ marginTop: "10px" }}>
                             <div
                                 style={{
-                                    height: "14px",
+                                    height: "10px",
                                     background: "#f3f3f3",
-                                    borderRadius: "7px",
+                                    borderRadius: "5px",
                                     overflow: "hidden",
                                 }}
                             >
@@ -94,7 +94,7 @@ const Resources = () => {
                                     }}
                                 ></div>
                             </div>
-                            <p style={{ fontSize: "16px", marginTop: "8px" }}>
+                            <p style={{ fontSize: "14px", marginTop: "6px" }}>
                                 {pdf.progress}% read
                             </p>
                         </div>

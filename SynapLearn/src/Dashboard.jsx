@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Typography, Drawer, List, ListItem, ListItemText, CssBaseline } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Typography, Drawer, List, ListItem, ListItemText, CssBaseline, colors } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const Dashboard = () => {
@@ -11,6 +11,19 @@ const Dashboard = () => {
     useEffect(() => {
         const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
         const storedUser = JSON.parse(localStorage.getItem('userDetails'));
+        const dummyCurriculum = {
+            currentModule: "Introduction to AI",
+            progress: "75%",
+            resources: [
+            { title: "AI Basics", link: "https://example.com/ai-basics" },
+            { title: "Machine Learning Overview", link: "https://example.com/ml-overview" }
+            ],
+            funFacts: [
+            "The term 'Artificial Intelligence' was coined in 1956.",
+            "AI can analyze data much faster than humans."
+            ]
+        };
+        localStorage.setItem('dummyCurriculum', JSON.stringify(dummyCurriculum));
 
         if (!isAuthenticated || !storedUser) {
             alert("You must log in first.");
@@ -37,7 +50,7 @@ const Dashboard = () => {
     return (
         <>
             {/* ✅ Updated Dashboard Title Position */}
-            <div style={{ padding: '10px 20px', position: 'absolute', top: '70px', left: '20px' }}>
+            <div style={{ padding: '10px 20px', position: 'bottom',  left: '20px', color: 'white' }}>
                 <h2>SynapLearn Dashboard</h2>
                 {user && (
                     <div>

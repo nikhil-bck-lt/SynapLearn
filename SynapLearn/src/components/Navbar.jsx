@@ -35,7 +35,7 @@ const Navbar = () => {
     };
 
     const drawerContent = (
-        <div role="presentation" onKeyDown={toggleDrawer(false)} style={{ width: 250 }}>
+        <div role="presentation" onKeyDown={toggleDrawer(false)} style={{ width: 250, color: "black" }}>
             <List>
                 <ListItem button onClick={() => handleNavigation("/curriculum")}>
                     <ListItemText primary="Curriculum" />
@@ -53,27 +53,32 @@ const Navbar = () => {
         </div>
     );
 
+    const drawerButtonStyle = {
+        color: "black", // Set the icon color to dark
+    };
+
     return (
-        <nav className="bg-blue-500 p-4 text-white flex justify-between items-center">
+        <nav className="bg-blue-500 p-4 text-white flex items-center justify-between">
             {user && (
-                <IconButton edge="start" color="inherit" onClick={toggleDrawer(true)}>
+                <IconButton edge="start" color="black" onClick={toggleDrawer(true)}>
                     <MenuIcon />
                 </IconButton>
             )}
             <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
                 {drawerContent}
             </Drawer>
-            <span className="text-2xl font-bold">SynapLearn</span>
-            <div className="text-lg">
-                <Link to="/" className="px-1 hover:text-gray-300">Home</Link>
-                <Link to="/about" className="px-1 hover:text-gray-300">About</Link>
-                <Link to="/support" className="px-5 hover:text-gray-300">Support</Link>
+            <span style={{ fontSize: "1rem", fontWeight: "bold", color: "black" }} className="text-2xl font-bold">SynapLearn</span>
+            {/* <span style={{ fontSize: "1rem", fontWeight: "bold" }} className="text-2xl font-bold">SynapLearn</span> */}
+            <div className="text-xl space-x-8 flex items-center">
+                <Link to="/" className="hover:text-gray-200" style={{color:"black"}} >Home</Link>
+                <Link to="/about" className="hover:text-gray-300" style={{color:"black"}}>About</Link>
+                <Link to="/support" className="hover:text-gray-300" style={{color:"black"}}>Support</Link>
                 {user ? (
-                    <button onClick={handleLogout} className="px-1 hover:text-gray-300">
-                        Logout ({user.username})
+                    <button onClick={handleLogout} className="hover:text-gray-300">
+                        Logout 
                     </button>
                 ) : (
-                    <Link to="/login" className="px-1 hover:text-gray-300">
+                    <Link to="/login" style={{padding:5, color:"black"}} className="hover:text-gray-300">
                         Login
                     </Link>
                 )}

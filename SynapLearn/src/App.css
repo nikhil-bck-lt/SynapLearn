@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(to right, #94bfaa, #81b18b);
+  background: linear-gradient(to right, #5b1c6b, #3D0A66);
   color: rgb(253, 250, 250);
 }
 
@@ -27,6 +27,8 @@
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 10px;
+  position: relative;
+  top: 50px;
 }
 
 .hero-content p {
@@ -36,7 +38,7 @@
 
 /* CTA Button */
 .btn {
-  background-color: #185a37;
+  background-color: #6C04BB;
   padding: 12px 24px;
   font-size: 1.2rem;
   border-radius: 10px;
@@ -46,5 +48,5 @@
 }
 
 .btn:hover {
-  background-color: #ff4500;
+  background-color: #c300ff;
 }

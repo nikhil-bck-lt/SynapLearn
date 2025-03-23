@@ -1,6 +1,4 @@
-import { useState } from 'react'
 import {BrowserRouter as Router ,Routes, Route} from 'react-router-dom'
-import Gallery from './Landing.jsx';  
 import Landing from './Landing'
 import Navbar from './components/Navbar.jsx';
 import Login from './Login.jsx';
@@ -20,7 +18,6 @@ function App() {
      <Navbar/>
       <Routes>
       <Route path="/" element={<Landing />} />
-      <Route path="/gallery" element={<Gallery />} />
       <Route path="/login" element={<Login />} />
       <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />

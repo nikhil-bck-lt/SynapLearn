@@ -10,7 +10,7 @@ body {
     max-width: 800px;
     margin: 40px auto;
     padding: 20px;
-    background: #3c674a;
+    background: #863195;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -26,21 +26,45 @@ body {
 
 /* Module Box */
 .module-box {
-    background: #384f6d;
+    background: #381e4b;
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
     border-left: 6px solid #3a5775;
     transition: all 0.3s ease;
 }
+.curriculum-container {
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+}
 
+.curriculum-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.module-box {
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.lesson-box {
+    padding: 8px;
+    margin-top: 8px;
+}
+
+.modal-content {
+    padding: 15px;
+    width: 85%;
+}
 .module-box:hover {
-    background: #3c5e76;
+    background: #653c76;
 }
 
 /* Lesson Box */
 .lesson-box {
-    background: rgb(60, 112, 80);
+    background: rgb(120, 85, 159);
     padding: 10px;
     border-radius: 6px;
     margin-top: 10px;
@@ -50,9 +74,9 @@ body {
 }
 
 .lesson-box:hover {
-    background: #007bff;
-    color: white;
-    border-color: #007bff;
+    background: #FFDAB9;
+    color: rgb(6, 6, 6);
+    border-color: #FFDAB9;
 }
 
 /* Lesson Modal */
