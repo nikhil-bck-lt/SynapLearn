@@ -2,27 +2,19 @@ import { useState } from 'react'
 import {BrowserRouter as Router ,Routes, Route} from 'react-router-dom'
 import Gallery from './Landing.jsx';  
 import Landing from './Landing'
-import './App.css'
 import Navbar from './components/Navbar.jsx';
 import Login from './Login.jsx';
 import Home from './pages/home.jsx';
 import About from './pages/about.jsx';
 import Support from './pages/support.jsx';
-import Dashboard from './dashboard.jsx';
-
+import Dashboard from './Dashboard.jsx';
+import AIChatbot from './pages/AIChatbot.jsx';
+import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-    {/* <nav>
-        <Link to="/">Landing</Link>
-        <Link to="/home">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/support">Support</Link>
-    </nav> */}
-
      <Navbar/>
       <Routes>
       <Route path="/" element={<Landing />} />
@@ -32,6 +24,8 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/support" element={<Support />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/chatbot" element={<AIChatbot />} />
+      
       </Routes>
     </>
   )

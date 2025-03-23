@@ -6,24 +6,25 @@ import MenuIcon from '@mui/icons-material/Menu';
 const Dashboard = () => {
     const navigate = useNavigate();
     const [drawerOpen, setDrawerOpen] = useState(false);
-    
-    // ✅ Retrieve authentication status and user details
-    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-    const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+    const [user, setUser] = useState(null);
 
-    // ✅ Redirect to login page if not authenticated
     useEffect(() => {
-        if (!isAuthenticated) {
+        const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+        const storedUser = JSON.parse(localStorage.getItem('userDetails'));
+
+        if (!isAuthenticated || !storedUser) {
             alert("You must log in first.");
             navigate('/login');
+        } else {
+            setUser(storedUser);
         }
-    }, [isAuthenticated, navigate]);
+    }, [navigate]);
 
-    // ✅ Logout function
     const handleLogout = () => {
         localStorage.removeItem('isAuthenticated');
         localStorage.removeItem('userDetails');
-        navigate('/login'); // ✅ Redirect to login page
+        setUser(null);
+        navigate('/login');
     };
 
     const toggleDrawer = (open) => (event) => {
@@ -33,51 +34,16 @@ const Dashboard = () => {
         setDrawerOpen(open);
     };
 
-    const drawerContent = (
-        <div role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)} style={{ width: 250 }}>
-            <List>
-                <ListItem button component="a" href="/curriculum">
-                    <ListItemText primary="Curriculum" />
-                </ListItem>
-                <ListItem button component="a" href="/ai-chatbot">
-                    <ListItemText primary="AI Chatbot" />
-                </ListItem>
-                <ListItem button component="a" href="/resources">
-                    <ListItemText primary="Resources" />
-                </ListItem>
-                <ListItem button onClick={handleLogout}>
-                    <ListItemText primary="Logout" />
-                </ListItem>
-            </List>
-        </div>
-    );
-
     return (
         <>
-            <CssBaseline />
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" style={{ flexGrow: 1 }}>
-                        SynapLearn Dashboard
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-            <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
-                {drawerContent}
-            </Drawer>
-
-            <div style={{ padding: '20px' }}>
-                <h2>Dashboard</h2>
-                {userDetails ? (
+            {/* ✅ Updated Dashboard Title Position */}
+            <div style={{ padding: '10px 20px', position: 'absolute', top: '70px', left: '20px' }}>
+                <h2>SynapLearn Dashboard</h2>
+                {user && (
                     <div>
-                        <p><strong>Username:</strong> {userDetails.username}</p>
-                        <p><strong>Email:</strong> {userDetails.email || 'No email provided'}</p>
+                        <p><strong>Username:</strong> {user.username}</p>
+                        <p><strong>Email:</strong> {user.email || 'No email provided'}</p>
                     </div>
-                ) : (
-                    <p>No user data available. Please log in.</p>
                 )}
             </div>
         </>
