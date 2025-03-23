@@ -1,46 +1,47 @@
-require("dotenv").config(); // Load environment variables
+import OpenAI from "openai";
+const client = new OpenAI();
 const express = require("express");
+const OpenAI = require("openai");
 const cors = require("cors");
-const axios = require("axios"); // For making API calls
-const bodyParser = require("body-parser");
+require("dotenv").config();
 
 const app = express();
-const PORT = 5000;
-
-app.use(cors());
 app.use(express.json());
-app.use(bodyParser.json());
+app.use(cors()); // Allows frontend to access backend
 
-// ✅ Test Route to Check Server
-app.get("/", (req, res) => {
-    res.send("Server is running...");
-});
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-// ✅ Simple "Hello World" Route
-app.get("/hello", (req, res) => {
-    res.status(200).send("Hello World");
-});
-
-// ✅ Chatbot API Endpoint
 app.post("/chat", async (req, res) => {
-    const userMessage = req.body.message;
+  try {
+    const { message } = req.body;
     
-    if (!userMessage) {
-        return res.status(400).json({ error: "Message is required" });
-    }
+    const model = "gpt-4-turbo";  // Change this to "gpt-3.5-turbo" if needed
+    console.log(`🔍 Using model: ${model}`);
 
-    try {
-        // Call OpenAI API (Example: Replace with your AI model)
-        const botResponse = `You said: ${userMessage}`;
+    const response = await openai.chat.completions.create({
+      model: model,
+      messages: [{ role: "user", content: message }],
+    });
 
-        res.json({ reply: botResponse });
-    } catch (error) {
-        console.error("Error generating chatbot response:", error);
-        res.status(500).json({ error: "Internal server error" });
-    }
+    res.json({ reply: response.choices[0].message.content, model: model });
+  } catch (error) {
+    console.error("❌ Error:", error);
+    res.status(500).json({ error: error.message });
+  }
 });
 
-// ✅ Start the Server
-app.listen(PORT, () => {
-    console.log(`✅ Server running on http://localhost:${PORT}`);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+
+const completion = await client.chat.completions.create({
+    model: "gpt-4o",
+    messages: [
+        {
+            role: "user",
+            content: "Write a one-sentence bedtime story about a unicorn.",
+        },
+    ],
 });
+
+console.log(completion.choices[0].message.content);

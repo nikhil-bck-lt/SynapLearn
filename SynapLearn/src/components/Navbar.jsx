@@ -63,8 +63,8 @@ const Navbar = () => {
             <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
                 {drawerContent}
             </Drawer>
-            <span className="text-xl font-bold">SynapLearn</span>
-            <div>
+            <span className="text-2xl font-bold">SynapLearn</span>
+            <div className="text-lg">
                 <Link to="/" className="px-1 hover:text-gray-300">Home</Link>
                 <Link to="/about" className="px-1 hover:text-gray-300">About</Link>
                 <Link to="/support" className="px-5 hover:text-gray-300">Support</Link>

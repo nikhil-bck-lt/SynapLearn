@@ -8,7 +8,9 @@ import Home from './pages/home.jsx';
 import About from './pages/about.jsx';
 import Support from './pages/support.jsx';
 import Dashboard from './Dashboard.jsx';
-import AIChatbot from './pages/AIChatbot.jsx';
+import Chatbot from './pages/Chatbot.jsx';
+import Curriculum from './pages/Curriculum.jsx';
+import Resources from './pages/Resources.jsx';
 import './App.css'
 
 function App() {
@@ -24,8 +26,9 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/support" element={<Support />} />
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/chatbot" element={<AIChatbot />} />
-      
+      <Route path="/chatbot" element={<Chatbot />} />
+      <Route path="/curriculum" element={<Curriculum />} />
+      <Route path="/resources" element={<Resources />} />
       </Routes>
     </>
   )

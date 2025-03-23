@@ -1,0 +1,102 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #080808;
+    color: #333;
+}
+
+/* Main Container */
+.curriculum-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #3c674a;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.curriculum-title {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    color: #fdfffc;
+    margin-bottom: 20px;
+}
+
+/* Module Box */
+.module-box {
+    background: #384f6d;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 6px solid #3a5775;
+    transition: all 0.3s ease;
+}
+
+.module-box:hover {
+    background: #3c5e76;
+}
+
+/* Lesson Box */
+.lesson-box {
+    background: rgb(60, 112, 80);
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.lesson-box:hover {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* Lesson Modal */
+.lesson-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Close Button */
+.close-btn {
+    background: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.close-btn:hover {
+    background: #0056b3;
+}
