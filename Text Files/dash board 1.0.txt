@@ -1,0 +1,86 @@
+dash board 1.0
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AppBar, Toolbar, IconButton, Typography, Drawer, List, ListItem, ListItemText, CssBaseline } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+
+const Dashboard = () => {
+    const [drawerOpen, setDrawerOpen] = useState(false);
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+
+    if (!isAuthenticated) {
+        window.location.href = '/login';
+        return null;
+    }
+
+    const handleLogout = () => {
+        localStorage.removeItem('isAuthenticated');
+        localStorage.removeItem('userDetails');
+        window.location.href = '/';
+    };
+    const toggleDrawer = (open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+        setDrawerOpen(open);
+    };
+
+    const drawerContent = (
+        <div
+            role="presentation"
+            onClick={toggleDrawer(false)}
+            onKeyDown={toggleDrawer(false)}
+            style={{ width: 250 }}
+        >
+            <List>
+                <ListItem button component="a" href="/curriculum">
+                    <ListItemText primary="Curriculum" />
+                </ListItem>
+                <ListItem button component="a" href="/ai-chatbot">
+                    <ListItemText primary="AI Chatbot" />
+                </ListItem>
+                <ListItem button component="a" href="/resources">
+                    <ListItemText primary="Resources" />
+                </ListItem>
+            </List>
+        </div>
+    );
+
+    return (
+        <>
+        <h2>Dashboard</h2>
+        <div style={{ padding: '20px' }}>
+            {user ? (
+                <div>
+                    <p><strong>Username:</strong> {user.username}</p>
+                    <p><strong>Email:</strong> {user.email || 'No email provided'}</p>
+                </div>
+            ) : (
+                <p>No user data available. Please log in.</p>
+            )}
+        </div>
+            <CssBaseline />
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        onClick={toggleDrawer(true)}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" style={{ flexGrow: 1 }}>
+                        SynapLearn Dashboard
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+            <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+                {drawerContent}
+            </Drawer>
+        </>
+    );
+};
+
+export default Dashboard;

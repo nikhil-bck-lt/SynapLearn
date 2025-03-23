@@ -1,0 +1,70 @@
+NAVBAR
+.navbar {
+    position: fixed;  /* Fix it to the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #4b0082, #1e90ff);
+    padding: 15px 30px;
+    color: white;
+    font-size: 20px;
+    z-index: 1000;  /* Ensure it stays above other elements */
+  }
+  
+  .logo {
+    font-size: 26px;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-links a:hover {
+    color: #ffcc00;
+  }
+  
+  /* Add padding to body to prevent content from hiding under navbar */
+  body {
+    padding-top: 30px; /* Adjust this value based on navbar height */
+  }
+  nav {
+  position: fixed;  /* Fix navbar at the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  padding: 15px 30px;
+  z-index: 1000;
+}
+
+nav a {
+  margin-left: 20px; /* Add space between links */
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+
+body {
+  padding-top: 60px; /* Prevent content from overlapping navbar */
+}
+
